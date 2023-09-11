@@ -1,32 +1,27 @@
 const express = require('express')
-const routes = require('../server')
 
 const app = express()
+const env = require('../config/prod.env');
 
-const whitelist = [
-  '*'
-];
-
-app.use((req, res, next) => {
-  const origin = req.get('referer');
-  const isWhitelisted = whitelist.find((w) => origin && origin.includes(w));
-  if (isWhitelisted) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,Content-Type,Authorization');
-    res.setHeader('Access-Control-Allow-Credentials', true);
+Object.keys(env).forEach((key) => {
+  if (!process.env[key]) {
+    process.env[key] = JSON.parse(env[key]);
   }
-  // Pass to next layer of middleware
-  if (req.method === 'OPTIONS') res.sendStatus(200);
-  else next();
 });
 
-const setContext = (req, res, next) => {
-  if (!req.context) req.context = {};
-  next();
-};
-app.use(setContext);
+const http = require('http');
 
-app.use('/', routes);
+require('../server')(app);
 
-module.exports = app
+const port = parseInt(process.env.PORT || 8080, 10);
+const httpServer = http.createServer(app);
+httpServer.listen(port, null, () => {
+  console.log(`HTTP server started: http://localhost:${port}`);
+});
+
+// Handle graceful shutdown
+process.on('SIGTERM', () => {
+  httpServer.close(() => {
+    process.exit(0);
+  });
+});

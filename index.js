@@ -7,8 +7,11 @@ Object.keys(env).forEach((key) => {
 });
 
 const http = require('http');
+const express = require('express');
 
-const app = require('./api');
+const app = express();
+
+require('./server')(app);
 
 const port = parseInt(process.env.PORT || 8080, 10);
 const httpServer = http.createServer(app);
