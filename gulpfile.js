@@ -5,7 +5,6 @@ const concat = require('gulp-concat');
 
 
 let prismScripts = [
-  'prismjs/prism',
   'prismjs/components/prism-core',
   'prismjs/components/prism-markup',
   'prismjs/components/prism-clike',
@@ -26,8 +25,11 @@ let prismScripts = [
   'prismjs/components/prism-makefile',
   'prismjs/components/prism-django',
   'prismjs/components/prism-kotlin',
-  'prismjs/components/prism-swift',
+  'prismjs/components/prism-swift'
 ].map(require.resolve);
+
+console.log(
+  path.join(path.dirname(require.resolve('prismjs/components/prism-core')), 'prism-!(*.min).js'))
 
 const tmpFile = path.join(__dirname, 'tmpfile')
 fs.writeFileSync(tmpFile, "export default Prism", {
