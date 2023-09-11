@@ -8,7 +8,7 @@ const pdf = require('./pdf');
 const pandoc = require('./pandoc');
 const conf = require('./conf');
 
-const resolvePath = pathToResolve => path.join(__dirname, '..', pathToResolve);
+const resolvePath = pathToResolve => path.join(__dirname, './dist', pathToResolve);
 
 module.exports = (app) => {
   if (process.env.NODE_ENV === 'production') {
