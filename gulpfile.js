@@ -5,31 +5,35 @@ const concat = require('gulp-concat');
 
 
 let prismScripts = [
-  'prismjs/components/prism-core',
-  'prismjs/components/prism-markup',
-  'prismjs/components/prism-clike',
-  'prismjs/components/prism-c',
-  'prismjs/components/prism-javascript',
-  'prismjs/components/prism-css',
-  'prismjs/components/prism-ruby',
-  'prismjs/components/prism-cpp',
-  'prismjs/components/prism-typescript',
-  'prismjs/components/prism-dart',
-  'prismjs/components/prism-json5',
-  'prismjs/components/prism-json',
-  'prismjs/components/prism-go',
-  'prismjs/components/prism-python',
-  'prismjs/components/prism-objectivec',
-  'prismjs/components/prism-java',
-  'prismjs/components/prism-lua',
-  'prismjs/components/prism-makefile',
-  'prismjs/components/prism-django',
-  'prismjs/components/prism-kotlin',
-  'prismjs/components/prism-swift'
+  'prismjs/components/prism-core'
+  // 'prismjs/components/prism-markup',
+  // 'prismjs/components/prism-clike',
+  // 'prismjs/components/prism-c',
+  // 'prismjs/components/prism-javascript',
+  // 'prismjs/components/prism-css',
+  // 'prismjs/components/prism-ruby',
+  // 'prismjs/components/prism-cpp',
+  // 'prismjs/components/prism-typescript',
+  // 'prismjs/components/prism-dart',
+  // 'prismjs/components/prism-json5',
+  // 'prismjs/components/prism-json',
+  // 'prismjs/components/prism-go',
+  // 'prismjs/components/prism-python',
+  // 'prismjs/components/prism-objectivec',
+  // 'prismjs/components/prism-java',
+  // 'prismjs/components/prism-lua',
+  // 'prismjs/components/prism-makefile',
+  // 'prismjs/components/prism-django',
+  // 'prismjs/components/prism-kotlin',
+  // 'prismjs/components/prism-swift'
 ].map(require.resolve);
 
 console.log(
   path.join(path.dirname(require.resolve('prismjs/components/prism-core')), 'prism-!(*.min).js'))
+
+prismScripts.push(
+  path.join(path.dirname(require.resolve('prismjs/components/prism-core')), 'prism-!(*.min).js')
+)
 
 const tmpFile = path.join(__dirname, 'tmpfile')
 fs.writeFileSync(tmpFile, "export default Prism", {
@@ -44,7 +48,7 @@ prismScripts.push(tmpFile)
 //     'prism-!(*.min).js'
 //   )
 // );
-// gulp.task('build-prism', () => gulp.src(prismScripts)
+// gulp.task('build', () => gulp.src(prismScripts)
 //   .pipe(concat('prism.js'))
 //   .pipe(gulp.dest(path.dirname(require.resolve('prismjs')))));
 
