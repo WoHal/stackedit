@@ -32,12 +32,6 @@ module.exports = {
     minimizer: [new UglifyJsPlugin()],
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      sourceMap: true
-    }),
     // extract css into its own file
     new MiniCssExtractPlugin({
       filename: '[name].css',
