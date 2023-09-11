@@ -11,7 +11,7 @@
   "scripts": {
     "pppppostinstall": "gulp build-prism",
     "start": "node build/dev-server.js",
-    "build-prism": "gulp build-prism2",
+    "build-prism": "gulp build-prism",
     "build": "npm run build-prism && node build/build.js && npm run build-style",
     "build-style": "webpack --config build/webpack.style.conf.js",
     "lint": "eslint --ext .js,.vue src server",
@@ -58,6 +58,7 @@
     "qs": "^6.11.2",
     "request": "^2.88.2",
     "serve-static": "^1.15.0",
+    "tmp": "^0.2.1",
     "turndown": "^4.0.2",
     "vue": "^2.7.14",
     "vuex": "^3.6.2"
