@@ -32,7 +32,7 @@ extended: false,
 }), user.paypalIpn);
 
 // Serve landing.html
-// app.get('/', (req, res) => res.sendFile(resolvePath('static/landing/index.html')));
+app.get('/', (req, res) => res.sendFile(resolvePath('static/landing/index.html')));
 // Serve sitemap.xml
 app.get('/sitemap.xml', (req, res) => res.sendFile(resolvePath('static/sitemap.xml')));
 // Serve callback.html
@@ -55,5 +55,6 @@ app.use('/static', serveStatic(resolvePath('dist/static'), {
     maxAge: '1y',
 }));
 
+app.use(serveStatic(resolvePath('dist')));
 
 module.exports = app
