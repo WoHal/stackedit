@@ -9,8 +9,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "pppppostinstall": "gulp build-prism",
-    "start": "node build/dev-server.js",
+    "dev": "node build/dev-server.js",
+    "start": "node index.js",
     "build-prism": "gulp build-prism",
     "build": "npm run build-prism && node build/build.js && npm run build-style",
     "build-style": "webpack --config build/webpack.style.conf.js",
