@@ -1,10 +1,10 @@
-var path = require('path')
 var utils = require('./utils')
 var webpack = require('webpack')
 var utils = require('./utils')
 var config = require('../config')
 var MiniCssExtractPlugin = require('mini-css-extract-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -27,6 +27,9 @@ module.exports = {
     path: config.build.assetsRoot,
     filename: '[name].js',
     publicPath: config.build.assetsPublicPath
+  },
+  optimization: {
+    minimizer: [new UglifyJsPlugin()],
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
