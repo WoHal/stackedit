@@ -3,6 +3,7 @@ const request = require('request');
 const conf = require('./conf');
 
 function githubToken(clientId, code) {
+  console.log(44444444444, clientId, process.env)
   return new Promise((resolve, reject) => {
     request({
       method: 'POST',

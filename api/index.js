@@ -32,7 +32,7 @@ extended: false,
 }), user.paypalIpn);
 
 // Serve landing.html
-app.get('/', (req, res) => res.sendFile(resolvePath('static/landing/index.html')));
+// app.get('/', (req, res) => res.sendFile(resolvePath('static/landing/index.html')));
 // Serve sitemap.xml
 app.get('/sitemap.xml', (req, res) => res.sendFile(resolvePath('static/sitemap.xml')));
 // Serve callback.html
@@ -42,7 +42,6 @@ app.get('/googleDriveAction', (req, res) =>
 res.redirect(`./app#providerId=googleDrive&state=${encodeURIComponent(req.query.state)}`));
 
 // Serve static resources
-if (process.env.NODE_ENV === 'production') {
 // Serve index.html in /app
 app.get('/app', (req, res) => res.sendFile(resolvePath('dist/index.html')));
 
@@ -56,7 +55,5 @@ app.use('/static', serveStatic(resolvePath('dist/static'), {
     maxAge: '1y',
 }));
 
-app.use(serveStatic(resolvePath('dist')));
-}
 
 module.exports = app
