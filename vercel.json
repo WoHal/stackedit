@@ -1,6 +1,20 @@
 {
+    "cleanUrls": true,
+    "installCommand": "pnpm install",
+    "outputDirectory": "dist",
+    "regions": ["hkg1"],
+    "redirects": [{
+        "source": "/sitemap.xml",
+        "destination": "/static/sitemap.xml"
+    }, {
+        "source": "/oauth2/callback",
+        "destination": "/static/oauth2/callback.html"
+    }, {
+        "source": "/app",
+        "destination": "/"
+    }],
     "rewrites": [{
         "source": "/(.*)",
-        "destination": "/api"
+        "destination": "/api/index"
     }]
  }

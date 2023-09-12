@@ -9,7 +9,7 @@ const pdf = require('../server/pdf');
 const pandoc = require('../server/pandoc');
 const conf = require('../server/conf');
 
-const resolvePath = pathToResolve => path.join(__dirname, '..', pathToResolve);
+const resolvePath = pathToResolve => path.join(__dirname, './', pathToResolve);
 
 // Enable CORS for fonts
 app.all('*', (req, res, next) => {
@@ -32,29 +32,29 @@ app.post('/paypalIpn', bodyParser.urlencoded({
 }), user.paypalIpn);
 
 // Serve landing.html
-app.get('/', (req, res) => res.sendFile(resolvePath('static/landing/index.html')));
+// app.get('/', (req, res) => res.sendFile(resolvePath('static/landing/index.html')));
 // Serve sitemap.xml
-app.get('/sitemap.xml', (req, res) => res.sendFile(resolvePath('static/sitemap.xml')));
+// app.get('/sitemap.xml', (req, res) => res.sendFile(resolvePath('static/sitemap.xml')));
 // Serve callback.html
-app.get('/oauth2/callback', (req, res) => res.sendFile(resolvePath('static/oauth2/callback.html')));
+// app.get('/oauth2/callback', (req, res) => res.sendFile(resolvePath('dist/static/oauth2/callback.html')));
 // Google Drive action receiver
 app.get('/googleDriveAction', (req, res) =>
-res.redirect(`./app#providerId=googleDrive&state=${encodeURIComponent(req.query.state)}`));
+res.redirect(`./#providerId=googleDrive&state=${encodeURIComponent(req.query.state)}`));
 
 // Serve static resources
 // Serve index.html in /app
-app.get('/app', (req, res) => res.sendFile(resolvePath('dist/index.html')));
+// app.get('/', (req, res) => res.sendFile(resolvePath('dist/index.html')));
 
-// Serve style.css with 1 day max-age
-app.get('/style.css', (req, res) => res.sendFile(resolvePath('dist/style.css'), {
-    maxAge: '1d',
-}));
+// // Serve style.css with 1 day max-age
+// app.get('/style.css', (req, res) => res.sendFile(resolvePath('dist/style.css'), {
+//     maxAge: '1d',
+// }));
 
-// Serve the static folder with 1 year max-age
-app.use('/static', serveStatic(resolvePath('dist/static'), {
-    maxAge: '1y',
-}));
+// // Serve the static folder with 1 year max-age
+// app.use('/static', serveStatic(resolvePath('dist/static'), {
+//     maxAge: '1y',
+// }));
 
-app.use(serveStatic(resolvePath('dist')));
+// app.use(serveStatic(resolvePath('dist')));
 
 module.exports = app
