@@ -1,15 +1,15 @@
 const app = require('express')();
 const compression = require('compression');
-const serveStatic = require('serve-static');
+// const serveStatic = require('serve-static');
 const bodyParser = require('body-parser');
-const path = require('path');
+// const path = require('path');
 const user = require('../server/user');
 const github = require('../server/github');
 const pdf = require('../server/pdf');
 const pandoc = require('../server/pandoc');
 const conf = require('../server/conf');
 
-const resolvePath = pathToResolve => path.join(__dirname, './', pathToResolve);
+// const resolvePath = pathToResolve => path.join(__dirname, './', pathToResolve);
 
 // Enable CORS for fonts
 app.all('*', (req, res, next) => {
