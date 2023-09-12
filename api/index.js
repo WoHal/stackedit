@@ -28,7 +28,7 @@ app.get('/userInfo', user.userInfo);
 app.post('/pdfExport', pdf.generate);
 app.post('/pandocExport', pandoc.generate);
 app.post('/paypalIpn', bodyParser.urlencoded({
-extended: false,
+    extended: false,
 }), user.paypalIpn);
 
 // Serve landing.html

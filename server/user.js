@@ -1,9 +1,11 @@
 const request = require('request');
-const AWS = require('aws-sdk');
+const {
+  S3
+} = require("@aws-sdk/client-s3");
 const verifier = require('google-id-token-verifier');
 const conf = require('./conf');
 
-const s3Client = new AWS.S3();
+const s3Client = new S3();
 
 const cb = (resolve, reject) => (err, res) => {
   if (err) {

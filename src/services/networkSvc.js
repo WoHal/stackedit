@@ -110,7 +110,7 @@ export default {
     if (!store.state.offline && !isConfLoading && !isConfLoaded) {
       try {
         isConfLoading = true;
-        const res = await this.request({ url: 'conf' });
+        const res = await this.request({ url: '/conf' });
         await store.dispatch('data/setServerConf', res.body);
         isConfLoaded = true;
       } finally {

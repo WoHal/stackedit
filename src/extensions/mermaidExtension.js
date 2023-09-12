@@ -1,4 +1,4 @@
-import 'mermaid';
+import mermaid from 'mermaid';
 import extensionSvc from '../services/extensionSvc';
 import utils from '../services/utils';
 
@@ -43,6 +43,7 @@ const containerElt = document.createElement('div');
 containerElt.className = 'hidden-rendering-container';
 document.body.appendChild(containerElt);
 
+window.mermaid = mermaid
 let init = () => {
   window.mermaid.initialize(config);
   init = () => {};

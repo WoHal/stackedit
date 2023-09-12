@@ -78,7 +78,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'auto'
+      chunksSortMode: 'manual'
     }),
     // copy custom static assets
     new CopyWebpackPlugin([
