@@ -85,6 +85,16 @@ git:
 
 # Default content for new files
 newFileContent: |
+  ---
+  title:
+  tag:
+  category:
+  ---
+
+
+
+
+
 
 
 
